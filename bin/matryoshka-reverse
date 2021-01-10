@@ -1,0 +1,12 @@
+#!/bin/bash
+
+d=`pwd`
+i=$1
+while [ "$i" != "-1" ]; do
+  unzip mat${i}.zip
+  cd mat${i}
+  i=$((i - 1))
+done
+mv * $d
+cd $d
+rm -r mat${1}
