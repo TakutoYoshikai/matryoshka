@@ -3,9 +3,11 @@
 mkdir mat0
 mv $1 mat0
 zip -r mat0.zip mat0
+rm -rf mat0
 
 for i in `seq 1 10`; do
   mkdir mat${i}
   mv mat$(($i - 1)).zip mat${i}
   zip -r mat${i}.zip mat${i}
+  rm -rf mat${i}
 done
