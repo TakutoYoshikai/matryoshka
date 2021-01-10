@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mkdir mat0
+zip -r mat0.zip mat0
+rm -rf mat0
+
+n=$(($RANDOM % $2 + 1))
+
+for i in `seq 1 $2`; do
+  mkdir mat${i}
+  if [ "$n" = "$i" ]; then
+    mv $1 mat${i}/.secret
+  fi
+  mv mat$(($i - 1)).zip mat${i}
+  zip -r mat${i}.zip mat${i}
+  rm -rf mat${i}
+done
