@@ -1,0 +1,15 @@
+#!/bin/bash
+
+d=`pwd`
+i=$1
+while [ "$i" != "-1" ]; do
+  unzip mat${i}.zip
+  cd mat${i}
+  file=`ls -a | grep .secret`
+  if [ "$file" != "" ]; then
+    mv $file $d/secret
+  fi
+  i=$((i - 1))
+done
+cd $d
+rm -r mat${1}
